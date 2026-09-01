@@ -1,0 +1,26 @@
+se - if 
+senao - else
+enquanto - while
+para - for
+função - function
+escolha - switch
+caso - case
+casocontrario - default
+pare - brak
+retorne - return
+escreva - printf (phyton -> print)
+leia - scanf
+
+inteiro - int
+verdadeiro - true
+falso - false
+real - float - duble
+cadeia - char (phyton -> str)
+logico - bool
+faca enquanto = do while
+
+inicio main
+
+& "C:\Program Files (x86)\Embarcadero\Dev-Cpp\TDM-GCC-64\bin\gcc.exe" main.c -o main.exe; .\main.exe
+
+ou - ||

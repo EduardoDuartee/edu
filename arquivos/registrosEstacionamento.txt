@@ -1,0 +1,1 @@
+Dia: 1 | Saiu | Tipo: carro | Placa: ccc | Valor pago: R$ 13.00
