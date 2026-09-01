@@ -1,2 +1,1 @@
-dia: 1 | Placa: ccc | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 2.00 Hrs | Valor a Pagar: 13.00
-dia: 1 | Placa: mmm | Entrada: 5.00 | Valor por tempo: 3.00 | Permanencia: 1.00 Hrs | Valor a Pagar: 5.00
+dia: 1 | Placa: ccc | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 1.00 Hrs | Valor a Pagar: 8.00

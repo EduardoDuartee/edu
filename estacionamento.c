@@ -324,12 +324,32 @@ int estacionamentos()
             default:
                 break;
             }
-            break;
+        break;
+    
+
+        case 5:
+            printf("\n==== Veiculos Estacionados ====\n");
+
+            registro = fopen("arquivos/registrosEstacionamento.txt", "r");
+            if (registro == NULL)
+            {
+                printf("\nNenhum veiculo registrado ou erro ao abrir arquivo!\n");
+                break;
+            }
+
+            while (fscanf(registro, "%d %49s %49s %f %f", &dia, tipoTexto, placa, &permanencia, &valorPagoF) == 5)
+            {
+                printf("Dia: %d | Tipo: %s | Placa: %s | Permanencia: %.1fh | Valor pago: R$ %.2f\n",
+                       dia, tipoTexto, placa, permanencia, valorPagoF);
+            }
+
+            fclose(registro);
+        break;
 
         default:
+            printf("\nOpcao invalida!\n");
             break;
         }
     }
     return 0;
 }
-
