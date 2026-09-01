@@ -1,1 +1,1 @@
-dia: 1 | Placa: ccc | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 1.00 Hrs | Valor a Pagar: 8.00
+
