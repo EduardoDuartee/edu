@@ -1,5 +1,0 @@
-dia: 1 Entrou | Tipo: carro | Placa: ccc | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 1.00 Hrs | Valor a Pagar: 8.00
-dia: 1 Entrou | Tipo: moto | Placa: mmm | Entrada: 5.00 | Valor por tempo: 3.00 | Permanencia: 3.00 Hrs | Valor a Pagar: 11.00
-dia: 1 Entrou | Tipo: carro | Placa: ccc | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 2.00 Hrs | Valor a Pagar: 13.00
-Dia: 1 | Saiu | Tipo: carro | Placa: ccc | Valor pago: R$ 8.00
-dia: 1 Entrou | Tipo: carro | Placa: qwe | Entrada: 8.00 | Valor por tempo: 5.00 | Permanencia: 2.00 Hrs | Valor a Pagar: 13.00
