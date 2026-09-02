@@ -153,10 +153,10 @@ int estacionamentos()
                 fflush(registro);
 
                 fprintf(
-                    historico,
-                    "dia: %d | Entrou | Tipo: %s | Placa: %s | Entrada: %.2f | Valor por tempo: %.2f | Permanencia: %.2f Hrs | Valor a Pagar: %.2f\n",
-                    dia, tipob, placa, TarifaM, adM, permanencia, valorPagoM
-                );
+                historico,
+                "dia: %d Entrou | Tipo: %s | Placa: %s | Entrada: %.2f | Valor por tempo: %.2f | Permanencia: %.2f Hrs | Valor a Pagar: %.2f\n",
+                dia, tipob, placa, TarifaM, adM, permanencia, valorPagoM
+                 );
                 fflush(historico);
 
                 fprintf(
@@ -344,6 +344,54 @@ int estacionamentos()
             }
 
             fclose(registro);
+        break;
+
+        case 6:
+            printf("\n==== >HISTORICO< ====\n");
+
+            
+            historico = fopen("arquivos/historico.txt", "r");
+            if (historico == NULL)
+            {
+                printf("\nErro ao abrir o Historico!\n");
+                break;
+            }
+
+           
+            while (fscanf(historico, "dia: %d Entrou | Tipo: %49s | Placa: %49s | Entrada: %f | Valor por tempo: %f | Permanencia: %f Hrs | Valor a Pagar: %f\n", 
+                          &dia, tipoTexto, placa, &TarifaC, &adC, &permanencia, &valorPagoC) == 7)
+            {
+                
+                printf("Dia: %d | Tipo: %s | Placa: %s | Entrada: R$ %.2f | Adicional: R$ %.2f | Permanencia: %.2f Hrs | Pago: R$ %.2f\n",
+                       dia, tipoTexto, placa, TarifaC, adC, permanencia, valorPagoC);
+                       
+            }
+
+            
+            fclose(historico);
+        break;
+
+        case 7:
+            printf("Fechando o Caixa");
+
+            printf("\n\n[1] -  Voltar ao Menu\n");
+            
+            
+
+            scanf("%d", &continuar);
+
+            switch (continuar)
+            {
+            case 1:
+            dia++;
+            estacionamentos();
+            break;
+                 
+           
+            default:
+            break;
+            }
+            
         break;
 
         default:

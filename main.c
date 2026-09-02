@@ -5,6 +5,7 @@
 #include "banco.c"
 #include "estacionamento.c"
 #include "iaacreditando.c"
+#include "mmo.c"
 
 int main() {
 
@@ -20,6 +21,7 @@ int main() {
         printf("2 - Calculadora\n");
         printf("3 - Banco\n");
         printf("4 - Estacionamentos\n");
+        printf("5 - Offspring\n");
         printf("0 - Sair\n\n");
 
         printf("Opcao: ");
@@ -44,7 +46,7 @@ int main() {
             break;
 
             case 5:
-                //erroCodigo = iaacreditando();
+                 mmorpg();
             break;
 
             case 0:

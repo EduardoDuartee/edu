@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h> // Necessario para gerar numeros aleatorios
+
+void missoes();
+void abrirInventario();
+float calcularDanoTotal();
+
+int missao;
+int fase = 1;
+
+// Atributos Base
+float dano = 10;
+float defesa = 10;
+float esquiva = 5;
+float danomagico = 0;
+
+// Equipamentos
+int atqdeespada = 0;
+int slotdegemasEspada = 0;
+
+char espada[50] = "nenhuma";
+char escudo[50] = "nenhuma";
+char capacete[50] = "nenhuma";
+char armadura[50] = "nenhuma";
+char calca[50] = "nenhuma";
+char livroMagico[50] = "nenhuma";
+char gemas[50] = "nenhuma";
+
+float calcularDanoTotal() {
+    return dano + atqdeespada;
+}
+
+void abrirInventario() {
+    printf("\n==============================");
+    printf("\n         INVENTARIO");
+    printf("\n==============================");
+    printf("\nEspada:         %s (+%d ATK)", espada, atqdeespada);
+    printf("\n------------------------------");
+    printf("\n--- ATRIBUTOS DO PERSONAGEM ---");
+    printf("\nDano Base:      %.1f", dano);
+    printf("\nDano Total:     %.1f", calcularDanoTotal());
+    printf("\n==============================");
+}
+
+void missoes() {
+    if (fase == 1) {
+        printf("\nVoce esta andando pela floresta e encontra uma espada de madeira!");
+        printf("\n\n====>Espada de Madeira<====");
+        printf("\n====>Rank-C<====");
+        printf("\n1 De attack damage");
+        printf("\nNao ha slot de gema\n");
+
+        strcpy(espada, "Espada de Madeira");
+        atqdeespada = 1;
+
+        printf("\n[Item Equipado: Espada de Madeira adicionada ao inventario!]");
+        printf("\nSeu Dano Total agora e: %.1f\n", calcularDanoTotal());
+
+        printf("\nMais a frente voce encontra um slime. Finalmente um inimigo para voce testar sua nova espada!");
+        
+        int atacar;
+        float vidaSlime = 15.0;
+
+        while (vidaSlime > 0) {
+            printf("\n\n------------------------------");
+            printf("\nVida do Slime: %.2f", vidaSlime);
+            printf("\nDeseja atacar o slime?");
+            printf("\n1 - Sim (Resolver desafio para atacar)");
+            printf("\n2 - Fugir");
+            printf("\nOpcao: ");
+            
+            scanf("%d", &atacar);
+
+            switch (atacar) {
+                case 1: {
+                    // GERA NUMEROS ALEATORIOS ENTRE 1 E 10 A CADA TURNO
+                    int num1 = (rand() % 10) + 1;
+                    int num2 = (rand() % 10) + 1;
+                    int respostaCorreta = num1 + num2;
+                    int respostaJogador;
+
+                    printf("\n[DESAFIO] Quanto e %d + %d? ", num1, num2);
+                    scanf("%d", &respostaJogador);
+
+                    if (respostaJogador == respostaCorreta) {
+                        float danoCausado = calcularDanoTotal();
+                        vidaSlime -= danoCausado;
+                        
+                        printf("\n-> Resposta CORRETA! Voce atacou o Slime e causou %.1f de dano!", danoCausado);
+                        
+                        if (vidaSlime <= 0) {
+                            printf("\n-> Parabens! Voce derrotou o Slime!");
+                            fase = 2;
+                        }
+                    } else {
+                        float curaSlime = calcularDanoTotal() * 0.02;
+                        vidaSlime += curaSlime;
+                        
+                        printf("\n-> INCORRETO! A resposta certa era %d.", respostaCorreta);
+                        printf("\n-> O Slime esquivou e recuperou %.2f de vida!", curaSlime);
+                    }
+                    break;
+                }
+
+                case 2:
+                    printf("\nVoce fugiu da batalha!");
+                    return;
+
+                default:
+                    printf("\nOpcao invalida!");
+                    break;
+            }
+        }
+    } else {
+        printf("\nVoce explora a floresta, mas a area do Slime ja esta limpa!");
+    }
+}
+
+void mmorpg() {
+    while (1) {
+        printf("\n\n==============================");
+        printf("\n     OFFSPRING O COMEC%cO", 128);
+        printf("\n==============================");
+        printf("\n1 - Partir Para A Jornada");
+        printf("\n2 - Abrir Inventario");
+        printf("\n3 - Ir para o mercado");
+        printf("\n4 - Ver Missao");
+        printf("\n5 - Como jogar");
+        printf("\n0 - Encerrar");
+        printf("\n\nOpcao: ");
+        scanf("%d", &missao);
+
+        if (missao == 0) {
+            printf("\nEncerrando o jogo...\n");
+            break;
+        }
+
+        switch (missao) {
+            case 1:
+                missoes();
+                break;
+            case 2:
+                abrirInventario();
+                break;
+            case 3:
+                printf("\nO mercado esta fechado no momento.");
+                break;
+            case 4:
+                printf("\n[MISSAO ATUAL] Fase %d: Explore a floresta.", fase);
+                break;
+            case 5:
+                printf("\nDigite os numeros correspondentes para navegar pelos menus.");
+                break;
+            default:
+                printf("\nOpcao invalida!");
+                break;
+        }
+    }
+}
+
+int main() {
+    // Inicializa o gerador de numeros aleatorios com base no tempo atual
+    srand(time(NULL));
+    
+    mmorpg();
+    return 0;
+}
